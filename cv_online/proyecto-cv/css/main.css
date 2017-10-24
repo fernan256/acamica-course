@@ -1,0 +1,21 @@
+
+html {}
+
+body {}
+
+h4 {
+    color: aqua;
+}
+
+h1 {
+    color: lightskyblue;
+    font-size: 38px;
+}
+
+h2 {
+    color: lightcoral;
+}
+
+ul li {
+    font-style: bold;
+}
