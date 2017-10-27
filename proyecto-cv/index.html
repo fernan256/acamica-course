@@ -8,39 +8,75 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="side-bar">
-      <img src="" alt="">
+    <div id="sideMenubar">
+      <img src="images/diego.jpg" alt="foto_perfil">
       <ul>
-        <li><a href="#whoAmI"></a>Presentación</li>
+        <li><a href="#whoAmI">Presentación</a></li>
         <li><a href="#academicFormation">Formación</a></li>
         <li><a href="#experience">Experiencia</a></li>
-        <li><a href="#portfolio"></a>Portfolio</li>
+        <li><a href="#portfolio">Portfolio</a></li>
       </ul>
     </div>
-    <div id="whoAmI">
-        <h1>Quién soy</h1>
-        <h2>AGUSTINA GONZÁLEZ</h2>
-        <h3>Front-End Jr.</h3>
-        <p>N O M B R E : A G U S T I N A G O N Z Á L E Z</p>
-        <p>E D A D : 1 8</p>
-        <p>D I R E C C I Ó N : N I C E T O 2 5 0 2</p>
-        <p>E M A I L : A G U S T I N A @ G O N Z A L E Z . C O M</p>
-        <p>T E L E F O N O : + 5 4 1 1 5 2 5 1 2 2 4 5</p>
-        <p>S K Y P E : A G U S . G O N Z</p>
-        <p>Soy una persona con muchos intereses y gustos diferentes. Estoy terminando la
-            secundaria y tengo ganas de trabajar en un lugar donde pueda aprender y crecer
-            como profesional.</p>
-        <p>Siento que podría integrarme en un equipo de trabajo y soy muy responsable en las
-            tareas que me corresponden.</p>
+    <div id="mainInfo">
+        <div id="whoAmI" class="container">
+            <h1 class="title">Quién soy</h1>
+            <h2>AGUSTINA GONZÁLEZ</h2>
+            <h3>Front-End Jr.</h3>
+            <p>N O M B R E : A G U S T I N A G O N Z Á L E Z</p>
+            <p>E D A D : 1 8</p>
+            <p>D I R E C C I Ó N : N I C E T O 2 5 0 2</p>
+            <p>E M A I L : A G U S T I N A @ G O N Z A L E Z . C O M</p>
+            <p>T E L E F O N O : + 5 4 1 1 5 2 5 1 2 2 4 5</p>
+            <p>S K Y P E : A G U S . G O N Z</p>
+            <p>Soy una persona con muchos intereses y gustos diferentes. Estoy terminando la
+                secundaria y tengo ganas de trabajar en un lugar donde pueda aprender y crecer
+                como profesional.</p>
+            <p>Siento que podría integrarme en un equipo de trabajo y soy muy responsable en las
+                tareas que me corresponden.</p>
+        </div>
+        <div id="academicFormation" class="container">
+          <h1 class="title">Formación</h1>
+          <h3>Bachiller Instituto Juan Santos Gaynor</h3>
+          <p>Estoy cursando la orientación en comunicación e informática de la secundaria. Elegí
+              esta orientación porque me pareció lo más interesante de todo lo que había
+              disponible. Me gustan mucho las materias que vemos de informática y es donde
+              tengo las mejores calicaciones.
+              Espero poder terminar la secundaria y seguir
+              estudiando alguna carrera en informática ó comunicación.</p>
+          <h3>Curso HTML 5 – Acámica</h3>
+          <p>El curso de HTML 5 me ayudó a entender mucho mejor cómo los dispositivos
+              móviles se utilizan en la actualidad y lo importante que es que las páginas web y
+              todas las aplicaciones que utilizan internet, puedan diseñarse pensando desde lo
+              móvil.</p>
+        </div>
+        <div id="experience" class="container">
+          <h1 class="title">Experiencia</h1>
+          <p>Como aún estoy en la secundaria, no tengo mucha experiencia laboral, pero sí
+              trabajé dando clases particulares a chicos que están en años anteriores, de primaria
+              y secundaria. Me gustaría empezar a trabajar en alguna empresa de tecnología y
+              donde pueda seguir aprendiendo de programación.</p>
+        </div>
+        <div id="portfolio" class="container">
+          <h1 class="title">Portfolio (PRÓXIMAMENTE)</h1>
+          <div class="slider">
+              <ul>
+                  <li>Proyecto 1</li>
+                  <li>Proyecto 2</li>
+                  <li>Proyecto 3</li>
+              </ul>
+          </div>
+        </div>
     </div>
-    <div id="academicFormation">
-
-    </div>
-    <div id="experience">
-
-    </div>
-    <div id="portfolio">
-
-    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/unslider.js"></script>
+    <script>
+      jQuery(document).ready(function($) {
+        $('.slider').unslider({
+          arrows: false,
+          autoplay: true
+  
+        });
+      });
+    </script>
 </body>
 </html>
