@@ -15,6 +15,7 @@ body p {
   font-size: 14px;
 }
 
+/******Side content******/
 #sideContent {
   width: 30%;
   float: left;
@@ -22,10 +23,12 @@ body p {
 
 #sideContent img {
   padding-top: 50px;
-  padding-left: 50px; 
-  width:  400px;
-  height: 300px;
+  padding-left: 40px; 
+  width:  300px;
+  height: 100%;
 }
+
+/*******Menu Bar*******/
 #menuBar ul {
   list-style: none;
 }
@@ -38,47 +41,55 @@ body p {
 
 #menuBar ul li a { 
   display:block; 
-  width:400px; 
+  width:300px; 
   height:28px; 
   background-color:#fdd47c; 
   padding-left:10px;
   text-decoration:none; 
   color:#060707;
   border-radius: 10px 10px 10px 10px;
+  text-align: center;
+  font-size: 20px;
+  padding: 5px 0px 5px 0px;
 }
 
-/*#menuBar ul li a:hover { 
-  -moz-transform:rotate(-5deg); 
-  -moz-box-shadow:10px 10px 20px #fdf07c;
-  -webkit-transform:rotate(-5deg); 
-  -webkit-box-shadow:10px 10px 20px #fdf07c;
-  transform:rotate(4deg); box-shadow:10px 10px 20px #000000; 
-  margin-left: 10px;
-}*/
-
-
-
-.title {
-  color: rgba(25, 199, 129, 0.911);
-  border-bottom: 5px solid rgba(25, 199, 129, 0.911);
-  /*padding-top: 5px;*/
-  padding-bottom: 5px;
+#menuBar ul li a:hover { 
+  display:block; 
+  width:300px; 
+  height:28px; 
+  background-color: rgba(25, 199, 129, 0.911); 
+  padding-left:10px;
+  text-decoration:none; 
+  color:#060707;
+  border-radius: 10px 10px 10px 10px;
+  padding: 5px 0px 5px 0px;
 }
 
+/********Main info******/
 #mainInfo {
   width: 70%;
   float: left;
   padding-top: 50px;
-  width: 800px;
+  width: 900px;
   padding-left: -100px;
 }
 
 #mainInfo h3 {
-  font-size: 22px;
+  font-size: 20px;
+  color: #e09b04;
 }
 
-/*#whoAmI
-#academicFormation*/
+.mainSeparator{
+  border-bottom: 2px solid #e09b04;
+  width: 600px;
+}
+
+.title {
+  color: rgba(25, 199, 129, 0.911);
+  border-bottom: 5px solid rgba(25, 199, 129, 0.911);
+  padding-bottom: 5px;
+}
+
 .container {
   background-color: white;
   width: 100%;
@@ -88,4 +99,19 @@ body p {
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
   border: 0px solid #000000;
+}
+
+/******Up***********/
+i {
+  border: solid rgba(25, 199, 129, 0.911);
+  border-width: 0 6px 6px 0;
+  /*display: inline-block;*/
+  padding: 8px;
+  float: right;
+  margin: -27px 15px;
+}
+
+.arrowUp {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
 }
