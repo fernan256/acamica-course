@@ -6,14 +6,39 @@ var grilla = [
   [7, 8, 9]
 ];
 
+var grilla3 = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+var grilla2 = [
+  [1, 5, 9],
+  [4, 2, 6],
+  [7, 8, 3]
+];
+
 /* Estas dos variables son para guardar la posición
 de la pieza vacía. Esta posición comienza siendo la [2, 2]*/
 var filaVacia = 2;
 var columnaVacia = 2;
 
+var result = true;
+
 
 // Esta función va a chequear si el Rompecabezas est&aacute; en la posición ganadora
 function chequearSiGano(){
+  for(var x = 0; x < grilla.length; x++){
+    for(var y = 0; y < grilla3.length; x++){
+      if(grilla[x] == grilla[y]) {
+        return true;
+        console.log(grilla[x]);
+        mostrarCartelGanador();
+      } else {
+        return false;
+      }
+    }
+  }
 }
 
 
@@ -21,16 +46,17 @@ function chequearSiGano(){
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
 // esta función
 function mostrarCartelGanador(){
+  alert("Ganaste")
 }
 
 // Intercambia posiciones grilla y en el DOM
-/* Esta función puede ser pensada por partes, incluso separarse en dos funciones, para 
+/* Esta función puede ser pensada por partes, incluso separarse en dos funciones, para
 separar el manejo de posición de la grilla y, por otro lado, el manejo del DOM.
 
-1) Lo primero que hay que pensar es como intercambiar dos posiciones en un arreglo de arreglos. 
+1) Lo primero que hay que pensar es como intercambiar dos posiciones en un arreglo de arreglos.
 Para que tengas en cuenta:
-si queremos intercambiar las posiciones [1,2] con la [0, 0] 
-si hacemos 
+si queremos intercambiar las posiciones [1,2] con la [0, 0]
+si hacemos
 arreglo[1][2] = arreglo[0][0];
 arreglo[0][0] = arreglo[1][2];
 
@@ -38,16 +64,16 @@ En vez de intercambiar esos valores vamos a terminar teniendo en ambas posicione
 Se te ocurre cómo solucionar esto con algo temporal?
 
 2) Como segunda parte tenemos que pensar el intercambio en el dom.
-Para eso, tenés que recordar todas las funciones aprendidas en los videos. 
+Para eso, tenés que recordar todas las funciones aprendidas en los videos.
 
 getElementyById: para obtener los elementos que queremos intercambiar
 parentNode: para obtener el padre de un elemento.
-cloneNode: para clonar un elemento 
+cloneNode: para clonar un elemento
 replaceChild(elem1, elem2): para reemplazar el elem1 por elem2
 
 y recordar cómo es la estructura de árbol del DOM para entender como cada una de estas
 funciones lo modifica. Esto lo podés ver en las clases
-teóricas: https://www.acamica.com/cursos/254/javascript-manipulando-dom. 
+teóricas: https://www.acamica.com/cursos/254/javascript-manipulando-dom.
 
 */
 function intercambiarPosiciones(filaPos1, columnaPos1, filaPos2, columnaPos2){
@@ -65,9 +91,9 @@ function posicionValida(fila, columna){
 
 }
 
-/* Movimiento de fichas, en este caso la que se mueve 
+/* Movimiento de fichas, en este caso la que se mueve
 es la blanca intercambiando su posición con otro elemento.
-Las direcciones están dadas por números que representa: 
+Las direcciones están dadas por números que representa:
 arriba, abajo, izquierda, derecha */
 function moverEnDireccion(direccion){
 
@@ -95,8 +121,8 @@ function moverEnDireccion(direccion){
     // Completar
   }
 
-  /* Se chequea si la nueva posición es válida, si lo es, se intercambia. 
-   Para que esta parte del código funcione correctamente deberás haber implementado 
+  /* Se chequea si la nueva posición es válida, si lo es, se intercambia.
+   Para que esta parte del código funcione correctamente deberás haber implementado
    las funciones posicionValida, intercambiarPosiciones y actualizarPosicionVacia */
   if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)){
     intercambiarPosiciones(filaVacia, columnaVacia,
@@ -131,28 +157,28 @@ function mezclarPiezas(veces){
 }
 
 /* capturarTeclas: Esta función captura las teclas presionadas por el usuario. Javascript
-permite detectar eventos, por ejemplo, cuando una tecla es presionada y en 
-base a eso hacer algo. No es necesario que entiendas como funciona esto ahora, 
+permite detectar eventos, por ejemplo, cuando una tecla es presionada y en
+base a eso hacer algo. No es necesario que entiendas como funciona esto ahora,
 en el futuro ya lo vas a aprender. Por ahora, sólo hay que entender que cuando
 se toca una tecla se hace algo en respuesta, en este caso, un movimiento */
 function capturarTeclas(){
   document.body.onkeydown = (function(evento) {
     if(evento.which == 40 || evento.which == 38 || evento.which == 39 || evento.which == 37){
       moverEnDireccion(evento.which);
-
+      console.log(evento.which);
       var gano = chequearSiGano();
       if(gano){
         setTimeout(function(){
-          mostrarCartelGanador();  
+          mostrarCartelGanador();
         },500);
-      } 
+      }
       evento.preventDefault();
     }
   })
 }
 
-/* Se inicia el rompecabezas mezclando las piezas 60 veces 
-y ejecutando la función para que se capturen las teclas que 
+/* Se inicia el rompecabezas mezclando las piezas 60 veces
+y ejecutando la función para que se capturen las teclas que
 presiona el usuario */
 function iniciar(){
   mezclarPiezas(60);
