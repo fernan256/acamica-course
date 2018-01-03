@@ -6,16 +6,10 @@ var grilla = [
   [7, 8, 9]
 ];
 
-var grilla3 = [
+var grillaGanadora = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9]
-];
-
-var grilla2 = [
-  [1, 5, 9],
-  [4, 2, 6],
-  [7, 8, 3]
 ];
 
 /* Estas dos variables son para guardar la posición
@@ -25,20 +19,30 @@ var columnaVacia = 2;
 
 var result = true;
 
+var imprimirMatriz = function(matriz) {
+  var contador = 0;
+  for (var i = 0; i < matriz.length; i++) {
+    for (var j = 0; j < matriz[i].length; j++) {
+      //contador++;
+      //if(contador == 9) {
+        //console.log("grilla: " + matriz[i][j]);
+        return matriz[i][j];
+      //}
+    }
+  }
+}
 
 // Esta función va a chequear si el Rompecabezas est&aacute; en la posición ganadora
 function chequearSiGano(){
-  for(var x = 0; x < grilla.length; x++){
-    for(var y = 0; y < grilla3.length; x++){
-      if(grilla[x] == grilla[y]) {
-        return true;
-        console.log(grilla[x]);
-        mostrarCartelGanador();
-      } else {
-        return false;
-      }
-    }
-  }
+  var matriz1 = imprimirMatriz(grilla);
+  var matriz2 = imprimirMatriz(grillaGanadora);
+  console.log(matriz1);
+  console.log(matriz2);
+  // if(imprimirMatriz(grilla) === imprimirMatriz(grillaGanadora)){
+  //    return true
+  // } else {
+  //    return false
+  // }
 }
 
 
@@ -77,18 +81,41 @@ teóricas: https://www.acamica.com/cursos/254/javascript-manipulando-dom.
 
 */
 function intercambiarPosiciones(filaPos1, columnaPos1, filaPos2, columnaPos2){
+  //console.log(filaPos1);
+  //console.log(filaPos2);
+  //console.log(columnaPos1);
+  console.log(columnaPos2);
 
+  var clon1 = grilla[filaPos1][columnaPos1];
+  var clon2 = grilla[filaPos2][columnaPos2];
+
+  grilla[filaPos1][columnaPos1] = clon2;
+  grilla[filaPos2][columnaPos2] = clon1;
+
+  var imagen1 = document.getElementById("pieza"+clon1);
+  var imagen2 = document.getElementById("pieza"+clon2);
+  var clonImagen1 = imagen1.cloneNode(true);
+  var clonImagen2 = imagen2.cloneNode(true);
+  var padreImagen1 = pieza1.parentNode;
+  var padreImagen2 = pieza2.parentNode;
+  var newImagen1 = padreImagen1.replaceChild(clonImagen2, imagen1);
+  var newImagen2 = padreImagen2.replaceChild(clonImagen1, imagen2);
 }
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila,nuevaColumna){
-
+  filaVacia = nuevaFila;
+  columnaVacia = nuevaColumna;
 }
 
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna){
-
+  if((fila >= 0) && (fila < 3) && (columna >= 0)&&(columna < 3)){
+    return true;
+  } else{
+    return false;
+  }
 }
 
 /* Movimiento de fichas, en este caso la que se mueve
@@ -102,29 +129,33 @@ function moverEnDireccion(direccion){
 
   // Intercambia pieza blanca con la pieza que está arriba suyo
   if(direccion == 40){
-    nuevaFilaPiezaVacia = filaVacia-1;
+    nuevaFilaPiezaVacia = filaVacia+1;
     nuevaColumnaPiezaVacia = columnaVacia;
   }
   // Intercambia pieza blanca con la pieza que está abajo suyo
   else if (direccion == 38) {
-    nuevaFilaPiezaVacia = filaVacia+1;
+    nuevaFilaPiezaVacia = filaVacia-1;
     nuevaColumnaPiezaVacia = columnaVacia;
 
   }
   // Intercambia pieza blanca con la pieza que está a su izq
   else if (direccion == 39) {
     // Completar
-
+    nuevaFilaPiezaVacia = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia+1;
   }
   // Intercambia pieza blanca con la pieza que está a su der
   else if (direccion == 37) {
     // Completar
+    nuevaFilaPiezaVacia = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia-1;
   }
 
   /* Se chequea si la nueva posición es válida, si lo es, se intercambia.
    Para que esta parte del código funcione correctamente deberás haber implementado
    las funciones posicionValida, intercambiarPosiciones y actualizarPosicionVacia */
   if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)){
+    //console.log(filaVacia);
     intercambiarPosiciones(filaVacia, columnaVacia,
     nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
     actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
@@ -165,8 +196,8 @@ function capturarTeclas(){
   document.body.onkeydown = (function(evento) {
     if(evento.which == 40 || evento.which == 38 || evento.which == 39 || evento.which == 37){
       moverEnDireccion(evento.which);
-      console.log(evento.which);
       var gano = chequearSiGano();
+      console.log(gano);
       if(gano){
         setTimeout(function(){
           mostrarCartelGanador();
