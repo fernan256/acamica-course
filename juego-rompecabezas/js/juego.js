@@ -19,38 +19,25 @@ var columnaVacia = 2;
 
 var result = true;
 
-var imprimirMatriz = function(matriz) {
+// Esta función va a chequear si el Rompecabezas est&aacute; en la posición ganadora
+function chequearSiGano(){
   var contador = 0;
-  for (var i = 0; i < matriz.length; i++) {
-    for (var j = 0; j < matriz[i].length; j++) {
-      //contador++;
-      //if(contador == 9) {
-        //console.log("grilla: " + matriz[i][j]);
-        return matriz[i][j];
-      //}
+  for (var fila = 0; fila <= grilla.length; fila++) {
+    for (var columna = 0; columna <= grilla[0].length; columna++) {
+      contador++;
+      if (grilla[fila][columna] != grillaGanadora[fila][columna] && contador < 9) {
+        return false;
+      } else if (grilla[fila][columna] === grillaGanadora[fila][columna] && contador == 9) {
+        return true;
+      }
     }
   }
 }
 
-// Esta función va a chequear si el Rompecabezas est&aacute; en la posición ganadora
-function chequearSiGano(){
-  var matriz1 = imprimirMatriz(grilla);
-  var matriz2 = imprimirMatriz(grillaGanadora);
-  console.log(matriz1);
-  console.log(matriz2);
-  // if(imprimirMatriz(grilla) === imprimirMatriz(grillaGanadora)){
-  //    return true
-  // } else {
-  //    return false
-  // }
-}
-
-
-
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
 // esta función
 function mostrarCartelGanador(){
-  alert("Ganaste")
+  alert("Felicitaciones has ganado!!")
 }
 
 // Intercambia posiciones grilla y en el DOM
@@ -81,25 +68,23 @@ teóricas: https://www.acamica.com/cursos/254/javascript-manipulando-dom.
 
 */
 function intercambiarPosiciones(filaPos1, columnaPos1, filaPos2, columnaPos2){
-  //console.log(filaPos1);
-  //console.log(filaPos2);
-  //console.log(columnaPos1);
-  console.log(columnaPos2);
+  var primerClon = grilla[filaPos1][columnaPos1];
+  var segundoClon = grilla[filaPos2][columnaPos2];
 
-  var clon1 = grilla[filaPos1][columnaPos1];
-  var clon2 = grilla[filaPos2][columnaPos2];
+  grilla[filaPos1][columnaPos1] = segundoClon;
+  grilla[filaPos2][columnaPos2] = primerClon;
 
-  grilla[filaPos1][columnaPos1] = clon2;
-  grilla[filaPos2][columnaPos2] = clon1;
+  var imagenUno = document.getElementById("pieza"+primerClon);
+  var imagenDos = document.getElementById("pieza"+segundoClon);
 
-  var imagen1 = document.getElementById("pieza"+clon1);
-  var imagen2 = document.getElementById("pieza"+clon2);
-  var clonImagen1 = imagen1.cloneNode(true);
-  var clonImagen2 = imagen2.cloneNode(true);
-  var padreImagen1 = pieza1.parentNode;
-  var padreImagen2 = pieza2.parentNode;
-  var newImagen1 = padreImagen1.replaceChild(clonImagen2, imagen1);
-  var newImagen2 = padreImagen2.replaceChild(clonImagen1, imagen2);
+  var clonImagenUno = imagenUno.cloneNode(true);
+  var clonImagenDos = imagenDos.cloneNode(true);
+
+  var padreImagenUno = pieza1.parentNode;
+  var padreImagenDos = pieza2.parentNode;
+
+  var imagenResultanteUno = padreImagenUno.replaceChild(clonImagenDos, imagenUno);
+  var imagenResultanteDos = padreImagenDos.replaceChild(clonImagenUno, imagenDos);
 }
 
 // Actualiza la posición de la pieza vacía

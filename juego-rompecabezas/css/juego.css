@@ -1,5 +1,3 @@
-
-
 /*Código armado por La Foca Loca S.A. No modificar*/
 body {
   font-family: Arial, sans-serif;
@@ -27,7 +25,7 @@ li::before {
 }
 
 .col-40 {
-  background: #FFF;
+  background: #f5c75f;
   padding: 30px;
   color: #000;
 }
@@ -40,6 +38,33 @@ li::before {
 
 .col-60 img {
   width: 32.8%; height: 35%;
+}
+
+.btn {
+  background: #1a97eb;
+  background-image: -webkit-linear-gradient(top, #1a97eb, #742bb8);
+  background-image: -moz-linear-gradient(top, #1a97eb, #742bb8);
+  background-image: -ms-linear-gradient(top, #1a97eb, #742bb8);
+  background-image: -o-linear-gradient(top, #1a97eb, #742bb8);
+  background-image: linear-gradient(to bottom, #1a97eb, #742bb8);
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 32px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #1a97eb;
+  background-image: -webkit-linear-gradient(top, #1a97eb, #d98f34);
+  background-image: -moz-linear-gradient(top, #1a97eb, #d98f34);
+  background-image: -ms-linear-gradient(top, #1a97eb, #d98f34);
+  background-image: -o-linear-gradient(top, #1a97eb, #d98f34);
+  background-image: linear-gradient(to bottom, #1a97eb, #d98f34);
+  text-decoration: none;
 }
 
 .footer {
@@ -64,14 +89,14 @@ li::before {
 }
 
 #titulo {
-  background: red;
+  background: #9349de;
   font-size: 24px;
   letter-spacing: 0.3em;
   padding-left: 20px;
 }
 
 #instrucciones p{
-  color: red;
+  color: #9349de;
 }
 
 @keyframes fadein {
